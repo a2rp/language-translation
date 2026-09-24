@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders the translation workspace", () => {
+    render(<App />);
+    expect(
+        screen.getByRole("heading", { name: /language translation/i })
+    ).toBeInTheDocument();
+    expect(
+        screen.getByRole("button", { name: /english/i })
+    ).toBeInTheDocument();
 });

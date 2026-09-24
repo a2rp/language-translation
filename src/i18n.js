@@ -11,15 +11,23 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: "en",
-        debug: true,
-        whitelist: languages,
-
+        supportedLngs: languages,
+        debug: false,
+        backend: {
+            loadPath:
+                (process.env.PUBLIC_URL || "") +
+                "/locales/{{lng}}/translation.json",
+        },
+        detection: {
+            order: ["localStorage", "navigator"],
+            caches: ["localStorage"],
+        },
         interpolation: {
             escapeValue: false,
         },
-        react: { useSuspense: false }
+        react: {
+            useSuspense: false,
+        },
     });
 
-
 export default i18n;
-
